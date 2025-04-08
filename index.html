@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRN SolarHouse</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="logo.jpg" type="">
+    <style>
+        :root {
+            --primary-blue: #0c2461;
+            --secondary-blue: #1e3799;
+            --primary-yellow: #f9ca24;
+            --secondary-yellow: #f0932b;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        /* Responsive typography */
+        h1 {
+            font-size: calc(1.5rem + 2vw);
+        }
+        
+        h2 {
+            font-size: calc(1.3rem + 1.5vw);
+        }
+        
+        h3 {
+            font-size: calc(1.1rem + 0.5vw);
+        }
+        
+        .bg-gradient-blue {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+        }
+        
+        .bg-gradient-yellow {
+            background: linear-gradient(to right, var(--primary-yellow), var(--secondary-yellow));
+        }
+        
+        .text-gradient-yellow {
+            background: linear-gradient(to right, var(--primary-yellow), var(--secondary-yellow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .logo {
+            font-size: calc(1rem + 1vw);
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--secondary-yellow);
+            border-radius: 50%;
+            top: 8px;
+            right: -12px;
+        }
+        
+        .nav-link {
+            position: relative;
+            padding: 5px 0;
+            margin: 0 10px;
+            font-size: calc(0.8rem + 0.3vw);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-yellow);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #e8f4fd 0%, #d0e8f9 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 5rem 0;
+        }
+        
+        /* Responsive decorative elements */
+       
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .water-drop {
+            position: absolute;
+            background-color: rgba(208, 232, 249, 0.4);
+            border-radius: 0 0 50% 50%;
+            z-index: 1;
+        }
+        
+        .drop1 {
+            width: 200px;
+            height: 200px;
+            left: 5%;
+            top: -100px;
+            transform: rotate(45deg);
+        }
+        
+        .drop2 {
+            width: 150px;
+            height: 150px;
+            right: 15%;
+            top: -75px;
+            transform: rotate(-15deg);
+        }
+        
+        .drop3 {
+            width: 100px;
+            height: 100px;
+            left: 30%;
+            bottom: -50px;
+            transform: rotate(30deg);
+        }
+        
+        /* Section title responsive adjustments */
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-yellow), var(--secondary-yellow));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            font-size: calc(0.9rem + 0.2vw);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Cards responsive adjustments */
+        .feature-card, .product-card, .contact-item {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card {
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            bottom: 0;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card:hover::before {
+            height: 10px;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Product cards responsive adjustments */
+        .product-card {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 170px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .spec-item {
+            background-color: #f1f7fe;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--secondary-blue);
+            display: inline-block;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        /* Why Us section responsive adjustments */
+        .why-us-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            padding: 5rem 0;
+        }
+        
+        .why-us-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .reason-item {
+            display: flex;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .reason-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .reason-icon {
+            font-size: 1.5rem;
+            color: var(--primary-yellow);
+            min-width: 40px;
+        }
+        
+        .wave-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23FFFFFF'%3E%3C/path%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23FFFFFF'%3E%3C/path%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23FFFFFF'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            z-index: 1;
+        }
+        
+        /* Contact section responsive adjustments */
+        .contact-section {
+            padding: 5rem 0;
+            background: #f9f9f9;
+        }
+        
+        .contact-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+        
+        /* Google Map responsive adjustments */
+        .google-map iframe {
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 350px;
+            border: 0;
+        }
+        
+        /* Price table responsive adjustments */
+        .price-table th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+        }
+        
+        .price-table td {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+        
+        .price-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        /* Footer responsive adjustments */
+        footer {
+            padding: 2rem 0;
+        }
+        
+        /* Responsive button adjustments */
+        .btn {
+            font-size: calc(0.8rem + 0.3vw);
+            padding: 0.5rem 1.25rem;
+        }
+
+        /* Hero image styles */
+        .hero-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        /* Hero Slider Styles */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        
+        .hero-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-prev, .hero-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            font-size: 1.5rem;
+        }
+        
+        .hero-prev {
+            left: 15px;
+        }
+        
+        .hero-next {
+            right: 15px;
+        }
+        
+        .hero-slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .hero-slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .hero-slider-dot.active {
+            background-color: white;
+        }
+        
+        /* Video Slider Styles */
+        .video-slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        
+        .video-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        
+        .video-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-prev, .video-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            font-size: 1.5rem;
+        }
+        
+        .video-prev {
+            left: 15px;
+        }
+        
+        .video-next {
+            right: 15px;
+        }
+        
+        .video-slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .video-slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .video-slider-dot.active {
+            background-color: white;
+        }
+        
+        /* Extra small devices (phones, 576px and down) */
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 3rem 0;
+                text-align: center;
+            }
+            
+            .sun-animation {
+                width: 60px;
+                height: 60px;
+                top: 20px;
+                right: 10%;
+            }
+            
+            .water-drop {
+                display: none;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .feature-icon {
+                font-size: 2rem;
+            }
+            
+            .product-image {
+                height: 150px;
+            }
+            
+            .product-image img {
+                max-height: 120px;
+            }
+            
+            .reason-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .reason-icon {
+                margin-bottom: 10px;
+            }
+            
+            .google-map iframe {
+                height: 250px;
+            }
+            
+            .modal-dialog {
+                margin: 0.5rem;
+            }
+            
+            .hero-slider {
+                height: 250px;
+            }
+            
+            .video-slider-container {
+                height: 250px;
+            }
+        }
+        
+        /* Small devices (landscape phones, 576px and up) */
+        @media (min-width: 576px) {
+            .hero-section {
+                padding: 4rem 0;
+            }
+            
+            .hero-slider {
+                height: 300px;
+            }
+            
+            .video-slider-container {
+                height: 300px;
+            }
+        }
+        
+        /* Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) {
+            .hero-section {
+                padding: 5rem 0;
+            }
+            
+            .product-image {
+                height: 180px;
+            }
+            
+            .hero-slider {
+                height: 350px;
+            }
+            
+            .video-slider-container {
+                height: 350px;
+            }
+        }
+        
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) {
+            .hero-section {
+                padding: 6rem 0;
+            }
+            
+            .product-image {
+                height: 200px;
+            }
+            
+            .reason-item {
+                flex-direction: row;
+                text-align: left;
+            }
+            
+            .hero-slider {
+                height: 400px;
+            }
+            
+            .video-slider-container {
+                height: 400px;
+            }
+        }
+        
+        /* Extra large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {
+            .hero-section {
+                padding: 7rem 0;
+            }
+            
+            .product-image {
+                height: 220px;
+            }
+            
+            .hero-slider {
+                height: 450px;
+            }
+            
+            .video-slider-container {
+                height: 450px;
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="bg-gradient-blue text-white sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark py-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand logo text-gradient-yellow" href="#">IRN SolarHouse</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#about">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#products">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#solutions">Solutions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                       
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+   <!-- Hero Section -->
+<section class="hero-section" id="home">
+    <div class="water-drop drop1"></div>
+    <div class="water-drop drop2"></div>
+    <div class="water-drop drop3"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-1 order-2">
+                <h1 class="fw-bold mb-4 text-primary-blue">Harness the <span class="text-secondary-blue">Sun's Energy</span> for Your Water Needs</h1>
+                <p class="lead mb-4">Innovative solar-powered water pumping solutions for agriculture, residential, and commercial applications. Sustainable, reliable, and cost-effective.</p>
+                <div class="d-flex flex-wrap gap-3 hero-buttons">
+                    <a href="#products" class="btn btn-primary bg-gradient-blue text-white px-4 py-2 fw-bold">Explore Products</a>
+                    <a href="#about" class="btn btn-outline-primary border-2 px-4 py-2 fw-bold">Learn More</a>
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-2 order-1 mb-4 mb-lg-0">
+                <div class="hero-slider">
+                    <div class="hero-slides">
+                        <div class="hero-slide">
+                            <img src="logo.jpg" alt="Solar Water Pump System">
+                        </div>
+                        <div class="hero-slide">
+                            <img src="h2.jpg" alt="Solar Water Pump System">
+                        </div>
+                        <div class="hero-slide">
+                            <img src="h4.jpg" alt="Solar Water Pump System">
+                        </div>
+                        <div class="hero-slide">
+                            <img src="h5.jpg" alt="Solar Water Pump System">
+                        </div>
+                        <div class="hero-slide">
+                            <img src="h6.jpg" alt="Solar Water Pump System">
+                        </div>
+                        <div class="hero-slide">
+                            <img src="h7.jpg" alt="Solar Water Pump System">
+                        </div>
+                    </div>
+                    <button class="hero-prev">&#10094;</button>
+                    <button class="hero-next">&#10095;</button>
+                    <div class="hero-slider-dots">
+                        <div class="hero-slider-dot active" data-index="0"></div>
+                        <div class="hero-slider-dot" data-index="1"></div>
+                        <div class="hero-slider-dot" data-index="2"></div>
+                        <div class="hero-slider-dot" data-index="3"></div>
+                        <div class="hero-slider-dot" data-index="4"></div>
+                        <div class="hero-slider-dot" data-index="5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Features Section -->
+    <section class="py-5" id="about">
+        <div class="container py-5">
+            <div class="section-title text-center mb-5">
+                <h2 class="fw-bold text-primary-blue">Why Solar Water Pumps?</h2>
+                <p class="text-muted">Discover the advantages of our solar-powered water pumping systems</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card p-4 h-100">
+                        <div class="feature-icon">☀️</div>
+                        <h3 class="fw-bold text-primary-blue">Clean Energy</h3>
+                        <p class="text-muted">Harness the power of the sun with zero emissions and reduce your carbon footprint while meeting your water needs.</p>
+                        <a href="#" class="text-decoration-none fw-bold text-secondary-blue">Learn more →</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card p-4 h-100">
+                        <div class="feature-icon">💰</div>
+                        <h3 class="fw-bold text-primary-blue">Cost Effective</h3>
+                        <p class="text-muted">Save significantly on electricity bills and operational costs with our energy-efficient solar water pumps.</p>
+                        <a href="#" class="text-decoration-none fw-bold text-secondary-blue">Learn more →</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card p-4 h-100">
+                        <div class="feature-icon">🔧</div>
+                        <h3 class="fw-bold text-primary-blue">Low Maintenance</h3>
+                        <p class="text-muted">Our pumps are designed to be durable and require minimal maintenance, saving you time and resources.</p>
+                        <a href="#" class="text-decoration-none fw-bold text-secondary-blue">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-5 bg-light" id="products">
+        <div class="container py-5">
+            <div class="section-title text-center mb-5">
+                <h2 class="fw-bold text-primary-blue">Our Solar Water Pumps</h2>
+                <p class="text-muted">Explore our range of high-quality solar water pumps for various applications</p>
+            </div>
+            <div class="row g-4">
+                <!-- 180W Solar Panel -->
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="product-card h-100">
+                        <div class="product-badge bg-gradient-yellow text-white">Popular</div>
+                        <div class="product-image">
+                            <img src="180w.jpg" alt="180W Solar Pannel" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="fw-bold text-primary-blue">180W Solar Pannel</h3>
+                            <div class="product-specs mb-3">
+                                <span class="spec-item">180W</span>
+                                <span class="spec-item">1350×668×30mm</span>
+                            </div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">14,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 250W Solar Panel -->
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="product-card h-100">
+                        <div class="product-image">
+                            <img src="250w.jpg" alt="250W Solar Pannel" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="fw-bold text-primary-blue">250W Solar Pannel</h3>
+                            <div class="product-specs mb-3">
+                                <span class="spec-item">250W</span>
+                                <span class="spec-item">1630×770×30mm</span>
+                            </div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">16,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 320W Solar Panel -->
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="product-card h-100">
+                        <div class="product-image">
+                            <img src="320w.jpg" alt="320W Solar Pannel" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="fw-bold text-primary-blue">320W Solar Pannel</h3>
+                            <div class="product-specs mb-3">
+                                <span class="spec-item">320W</span>
+                                <span class="spec-item">755×880×30mm</span>
+                            </div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">18,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- QB60 Solar Water Pump -->
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="product-card h-100">
+                        <div class="product-badge bg-gradient-yellow text-white">Popular</div>
+                        <div class="product-image">
+                            <img src="m3.jpg" alt="QB60 Pump" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="fw-bold text-primary-blue">QB60 Solar Water Pump</h3>
+                            <div class="product-specs mb-3">
+                                <span class="spec-item">180W×2</span>
+                                <span class="spec-item">50ft Head</span>
+                                <span class="spec-item">30ft Flow</span>
+                            </div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">55,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="product-card h-100">
+                        <div class="product-badge bg-gradient-yellow text-white">Popular</div>
+                        <div class="product-image">
+                            <img src="m1.jpg" alt="QB60 Pump" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="fw-bold text-primary-blue">DCQDX110V-18-2-101</h3>
+                            <div class="product-specs mb-3">
+                                <span class="spec-item">250Wx4</span>
+                                <span class="spec-item">60ft Head</span>
+                                <span class="spec-item">High Capacity</span>
+                            </div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">125,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="product-card h-100">
+                       
+                        <div class="product-image">
+                            <img src="m2.jpg" alt="QB60 Pump" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="fw-bold text-primary-blue">QGDC3S-12V-30 Pump</h3>
+                            <div class="product-specs mb-3">
+                                <span class="spec-item">180W×1</span>
+                                <span class="spec-item">98ft Flow</span>
+                                <span class="spec-item">12V System</span>
+                            </div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">67,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="product-card h-100">
+                        <div class="product-badge bg-gradient-yellow text-white">Best Seller</div>
+                        <div class="product-image">
+                            <img src="m2.jpg" alt="QB60 Pump" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="fw-bold text-primary-blue">QGDC3S-24V-50 Pump</h3>
+                            <div class="product-specs mb-3">
+                                <span class="spec-item">250Wx1</span>
+                                <span class="spec-item">196ft Flow</span>
+                                <span class="spec-item">24V System</span>
+                            </div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">85,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="product-card h-100">
+                       
+                        <div class="product-image">
+                            <img src="m2.jpg" alt="QB60 Pump" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="fw-bold text-primary-blue">QGDC3S48V-70 Pump</h3>
+                            <div class="product-specs mb-3">
+                                <span class="spec-item">250Wx2</span>
+                                <span class="spec-item">229ft Flow</span>
+                                <span class="spec-item">48V System</span>
+                            </div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">96,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="product-card h-100">
+                       
+                        <div class="product-image">
+                            <img src="m4.jpg" alt="QB60 Pump" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="fw-bold text-primary-blue">QJDC31-24V-25 Pump</h3>
+                            <div class="product-specs mb-3">
+                                <span class="spec-item">250Wx1</span>
+                                <span class="spec-item">82Ft Flow</span>
+                                <span class="spec-item">24V System</span>
+                            </div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">72,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                  
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="product-card h-100">
+                       
+                        <div class="product-image">
+                            <img src="m4.jpg" alt="QB60 Pump" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="fw-bold text-primary-blue">QJDC31-36V-30 Pump</h3>
+                            <div class="product-specs mb-3">
+                                <span class="spec-item">320Wx1</span>
+                                <span class="spec-item">98Ft Flow</span>
+                                <span class="spec-item">36V System</span>
+                            </div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">82,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="product-card h-100">
+                        <div class="product-badge bg-gradient-yellow text-white">Popular</div>
+                        <div class="product-image">
+                            <img src="m5.jpg" alt="QB60 Pump" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="fw-bold text-primary-blue">AUTOJLM60-400 Pressure Pump</h3>
+                            <div class="product-specs mb-3">
+                                <span class="spec-item">AC System</span>
+                                <span class="spec-item">High Capacity</span>
+                                <span class="spec-item">Pressure Pump</span>
+                                
+                            </div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">25,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add more product cards here following the same pattern -->
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-us-section position-relative" id="solutions">
+        <div class="container">
+            <div class="section-title text-center mb-5">
+                <h2 class="fw-bold text-white">Why Choose IRN SolarHouse</h2>
+                <p class="text-white-50">What sets us apart from the competition</p>
+            </div>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="video-slider-container">
+                        <div class="video-slides">
+                           
+                            <div class="video-slide">
+                                <video src="vid5.mp4" controls></video>
+                            </div>
+                            <div class="video-slide">
+                                <video src="vid4.mp4" controls></video>
+                            </div>
+
+                            <div class="video-slide">
+                                <video src="vid8.mp4" controls></video>
+                            </div>
+                        </div>
+                        <button class="video-prev">&#10094;</button>
+                        <button class="video-next">&#10095;</button>
+                        <div class="video-slider-dots">
+                            <div class="video-slider-dot active" data-index="0"></div>
+                            <div class="video-slider-dot" data-index="1"></div>
+                            <div class="video-slider-dot" data-index="2"></div>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="reasons-list">
+                        <div class="reason-item">
+                            <div class="reason-icon">🏆</div>
+                            <div class="reason-text">
+                                <h3 class="text-white">Quality Products</h3>
+                                <p class="text-white-50">We offer only the highest quality solar water pumps sourced from trusted manufacturers with proven track records.</p>
+                            </div>
+                        </div>
+                        <div class="reason-item">
+                            <div class="reason-icon">👨‍🔧</div>
+                            <div class="reason-text">
+                                <h3 class="text-white">Expert Installation</h3>
+                                <p class="text-white-50">Our team of certified technicians ensures proper installation and optimal performance of your solar pumping system.</p>
+                            </div>
+                        </div>
+                        <div class="reason-item">
+                            <div class="reason-icon">🛡️</div>
+                            <div class="reason-text">
+                                <h3 class="text-white">Warranty & Support</h3>
+                                <p class="text-white-50">Enjoy peace of mind with our comprehensive warranties and dedicated after-sales support team.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title text-center mb-5 ">
+                <h2 class="fw-bold text-primary-blue">Contact Us</h2>
+                <p class="text-muted">Get in touch with us for any inquiries or support</p>
+            </div>
+            <div class="row justify-content-center g-4 ">
+                <div class="col-sm-6 col-md-4">
+                    <div class="contact-item" style="height: 270px;">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3 class="text-primary-blue mt-3">Landline</h3>
+                        <p class="text-muted">0812369003</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="contact-item" style="height: 270px;">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3 class="text-primary-blue mt-3">Mobile</h3>
+                        <p class="text-muted">0777501836 - Hanguranketha Branch</p>
+                        <p class="text-muted">0716241213 - Minuwangoda Branch</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="contact-item" style="height: 270px;">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3 class="text-primary-blue mt-3">Address</h3>
+                        <p class="text-muted">IRN Solar House, Madanwala, Hanguranketha</p>
+                        <p class="text-muted">IRN Solar House, Colombo Road, Vatinapaha, Minuwangoda</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Map Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold text-primary-blue mb-4">Our Location</h2>
+            <div class="google-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.661732673667!2d80.77778757446228!3d7.165046892839602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae37d00539a8c8d%3A0x834756bd1ca717ba!2sIRN%20Solar%20House!5e0!3m2!1sen!2ssg!4v1742750668996!5m2!1sen!2ssg" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer class="bg-gradient-blue text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <p class="mb-1"><i class="fas fa-phone-alt me-2"></i> 0812369003</p>
+                    <p class="mb-1"><i class="fas fa-mobile-alt me-2"></i> 0777501836 (Hanguranketha)</p>
+                    <p class="mb-1"><i class="fas fa-mobile-alt me-2"></i> 0716241213 (Minuwangoda)</p>
+                </div>
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <img src="qr.jpg" alt="QR Code" class="img-fluid" style="max-height: 100px;">
+                    <div class="mt-2">
+                        <a href="qr.jpg" class="text-white fs-3" target="_blank">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center text-md-end">
+                    <p class="mb-1">&copy; 2025 IRN SolarHouse. All rights reserved.</p>
+                    <p class="mb-0">Designed by Dasun Subawickrama</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Hero Slider Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hero Slider
+            let heroCurrentIndex = 0;
+            const heroSlides = document.querySelectorAll('.hero-slide');
+            const heroDots = document.querySelectorAll('.hero-slider-dot');
+            const heroSlidesContainer = document.querySelector('.hero-slides');
+            const totalHeroSlides = heroSlides.length;
+            let heroInterval;
+
+            function updateHeroSlider() {
+                heroSlidesContainer.style.transform = `translateX(-${heroCurrentIndex * 100}%)`;
+                
+                // Update dots
+                heroDots.forEach((dot, index) => {
+                    if (index === heroCurrentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            function moveHeroSlide(direction) {
+                heroCurrentIndex = (heroCurrentIndex + direction + totalHeroSlides) % totalHeroSlides;
+                updateHeroSlider();
+                resetHeroInterval();
+            }
+
+            function goToHeroSlide(index) {
+                heroCurrentIndex = index;
+                updateHeroSlider();
+                resetHeroInterval();
+            }
+
+            function resetHeroInterval() {
+                clearInterval(heroInterval);
+                heroInterval = setInterval(() => {
+                    moveHeroSlide(1);
+                }, 5000);
+            }
+
+            // Event listeners for hero slider
+            document.querySelector('.hero-prev').addEventListener('click', () => moveHeroSlide(-1));
+            document.querySelector('.hero-next').addEventListener('click', () => moveHeroSlide(1));
+            
+            heroDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'));
+                    goToHeroSlide(index);
+                });
+            });
+
+            // Start auto slide
+            resetHeroInterval();
+
+            // Video Slider Functionality
+            let videoCurrentIndex = 0;
+            const videoSlides = document.querySelectorAll('.video-slide');
+            const videoDots = document.querySelectorAll('.video-slider-dot');
+            const videoSlidesContainer = document.querySelector('.video-slides');
+            const totalVideoSlides = videoSlides.length;
+            let videoInterval;
+
+            function updateVideoSlider() {
+                videoSlidesContainer.style.transform = `translateX(-${videoCurrentIndex * 100}%)`;
+                
+                // Update dots
+                videoDots.forEach((dot, index) => {
+                    if (index === videoCurrentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            function moveVideoSlide(direction) {
+                videoCurrentIndex = (videoCurrentIndex + direction + totalVideoSlides) % totalVideoSlides;
+                updateVideoSlider();
+                resetVideoInterval();
+            }
+
+            function goToVideoSlide(index) {
+                videoCurrentIndex = index;
+                updateVideoSlider();
+                resetVideoInterval();
+            }
+
+            function resetVideoInterval() {
+                clearInterval(videoInterval);
+                videoInterval = setInterval(() => {
+                    moveVideoSlide(1);
+                }, 33000);
+            }
+
+            // Event listeners for video slider
+            document.querySelector('.video-prev').addEventListener('click', () => moveVideoSlide(-1));
+            document.querySelector('.video-next').addEventListener('click', () => moveVideoSlide(1));
+            
+            videoDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'));
+                    goToVideoSlide(index);
+                });
+            });
+
+            // Start auto slide
+            resetVideoInterval();
+        });
+    </script>
+</body>
+</html>
