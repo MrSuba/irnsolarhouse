@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="shortcut icon" href="logomain.jpg" type="">
+    <link rel="shortcut icon" href="newlogo.jpg" type="">
     <style>
         :root {
             --primary-blue: #0c2461;
@@ -55,12 +55,16 @@
             color: transparent;
         }
         
+       .site-logo {
+            height: 80px;   /* adjust logo size */
+            width: auto;
+        }
+        
         .logo {
             font-size: calc(1rem + 1vw);
             font-weight: 700;
             position: relative;
         }
-        
         .logo::after {
             content: '';
             position: absolute;
@@ -78,7 +82,6 @@
             margin: 0 10px;
             font-size: calc(0.8rem + 0.3vw);
         }
-        
         .nav-link::after {
             content: '';
             position: absolute;
@@ -89,10 +92,13 @@
             background-color: var(--primary-yellow);
             transition: width 0.3s ease;
         }
-        
         .nav-link:hover::after {
             width: 100%;
         }
+
+        .nav-link::after {
+    background-color: var(--primary-blue); /* underline hover effect in blue */
+}
         
         .hero-section {
             background: linear-gradient(135deg, #e8f4fd 0%, #d0e8f9 100%);
@@ -667,41 +673,43 @@
 </head>
 <body>
     <!-- Header & Navigation -->
-    <header class="bg-gradient-blue text-white sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark py-3">
-                <div class="container-fluid">
-                    <a class="navbar-brand logo text-gradient-yellow" href="#">IRN SolarHouse</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#home">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#about">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#products">Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#solutions">Solutions</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#projects">Projects</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="#contact">Contact</a>
-                            </li>
-                        </ul>
-                       
-                    </div>
+    <header class="bg-white text-blue sticky-top shadow-sm">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light py-3">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="newlogo.jpg" alt="IRN SolarHouse Logo" class="site-logo me-2">
+                    <span class="logo text-gradient-yellow">IRN SolarHouse</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#about">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#products">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#solutions">Solutions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#contact">Contact</a>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
-        </div>
-    </header>
+            </div>
+        </nav>
+    </div>
+</header>
 
    <!-- Hero Section -->
 <section class="hero-section" id="home">
@@ -866,7 +874,7 @@
                                 <span class="spec-item">50ft Head</span>
                                 <span class="spec-item">30ft Flow</span>
                             </div>
-                            <div class="product-price fw-bold text-primary-blue mb-3">60,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">55,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
                         </div>
                     </div>
                 </div>
@@ -998,7 +1006,7 @@
                                 <span class="spec-item">Pressure Pump</span>
                                 
                             </div>
-                            <div class="product-price fw-bold text-primary-blue mb-3">30,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
+                            <div class="product-price fw-bold text-primary-blue mb-3">25,000 LKR <span class="text-muted fw-normal">/ unit</span></div>
                         </div>
                     </div>
                 </div>
@@ -1020,6 +1028,7 @@
                 <div class="col-lg-6">
                     <div class="video-slider-container">
                         <div class="video-slides">
+                           
                             <div class="video-slide">
                                 <video src="vid9.mp4" controls></video>
                             </div>
@@ -1030,15 +1039,17 @@
                                 <video src="vid4.mp4" controls></video>
                             </div>
 
-                           
+                            <div class="video-slide">
+                                <video src="vid8.mp4" controls></video>
+                            </div>
                         </div>
                         <button class="video-prev">&#10094;</button>
                         <button class="video-next">&#10095;</button>
                         <div class="video-slider-dots">
                             <div class="video-slider-dot active" data-index="0"></div>
                             <div class="video-slider-dot" data-index="1"></div>
-                             <div class="video-slider-dot" data-index="2"></div>
-                           
+                            <div class="video-slider-dot" data-index="2"></div>
+                            <div class="video-slider-dot" data-index="3"></div>
                            
                         </div>
                     </div>
@@ -1076,7 +1087,7 @@
 <section class="py-5 bg-light" id="projects">
     <div class="container">
         <div class="section-title text-center mb-5">
-            <h2 class="fw-bold text-primary-blue">Our Projects</h2>
+            <h2 class="fw-bold text-primary-blue">Completed Projects</h2>
             <p class="text-muted">Here’s a glimpse of one of our successful installations</p>
         </div>
         <div class="row justify-content-center">
@@ -1088,6 +1099,8 @@
         </div>
     </div>
 </section>
+
+
 
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
@@ -1129,16 +1142,16 @@
         <div class="container">
             <h2 class="text-center fw-bold text-primary-blue mb-4">Hanguranketha Branch</h2>
             <div class="google-map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3546.3011354644464!2d80.7803625!3d7.1650469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae37d00539a8c8d%3A0x834756bd1ca717ba!2sIRN%20Solar%20House!5e1!3m2!1sen!2ssg!4v1744781224746!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.661732673667!2d80.77778757446228!3d7.165046892839602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae37d00539a8c8d%3A0x834756bd1ca717ba!2sIRN%20Solar%20House!5e0!3m2!1sen!2ssg!4v1742750668996!5m2!1sen!2ssg" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
 
-     <section class="py-5 bg-light">
+    <section class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center fw-bold text-primary-blue mb-4">Minuwangoda Branch</h2>
             <div class="google-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d443.25384123872857!2d79.993923!3d7.1997166!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2e512995dfad7%3A0x85ef9846b4877bd2!2sIRN%20Solar%20House!5e1!3m2!1sen!2slk!4v1745048124306!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3546.031968355886!2d79.99150397446265!3d7.199558192805831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2e5000a8661ff%3A0xff656f180e2a93e1!2sSAMPATH%20GLASS%20HOUSE!5e1!3m2!1sen!2ssg!4v1744779015796!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
